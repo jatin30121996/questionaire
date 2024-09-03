@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+    <h6><b><i>{{data.email.email}}</i></b></h6>
+    <h3>{{data.heading}}</h3>
+    <p>{{data.post}}</p>
+    <form action="/postanswer/" method="post">{% csrf_token %}
+        <input type="hidden" name="heading" value="{{data.heading}}">
+        <textarea class="form-control" name="post_answer" placeholder="Type your Answer here" rows="3"></textarea>
+        <button type="submit" class="btn btn-primary my-3">Post the answer</button>
+    </form>
+    {% for datas in check_data %}
+    <h6><b><i>{{datas.email.email}}</i></b></h6>
+    <p>{{datas.replay}}</p>
+    {% endfor %}
+</div>
+{% endblock body %}

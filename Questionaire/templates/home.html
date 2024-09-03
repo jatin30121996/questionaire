@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block css %}
+<style>
+.chk{
+    display: none;
+}
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="container">
+    <div class="toggle">
+    <form action="/login/" method="post">{% csrf_token %}
+         <div class="mb-3 row my-3">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="staticEmail" name="email" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" name="password" id="inputPassword">
+            </div>
+        <button type="submit" class="btn btn-primary my-3">Log in</button>
+        <button type="button" class="btn btn-primary my-3 buttons">Create Account</button>
+          </div>
+
+    </form>
+        </div>
+        <div class="toggles chk">
+    <form action="/createAccount/" method="post">{% csrf_token %}
+         <div class="mb-3 row my-3">
+            <label for="Email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" name="email" id="Email" value="">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="Password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" name="password1" id="Password">
+            </div>
+              <label for="confirmPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" name="password2" id="confirmPassword">
+            </div>
+
+
+        <button type="submit" class="btn btn-primary my-3">Create Account</button>
+        <button type="button" class="btn btn-primary my-3 buttonss">Log in</button>
+          </div>
+
+    </form>
+        </div>
+</div>
+{% endblock body %}
+{% block js %}
+<script>
+    const button = document.getElementsByClassName("buttons");
+    button[0].addEventListener("click", function(){
+    const element = document.getElementsByClassName("toggle")[0];
+    element.classList.toggle("chk");
+    const elements = document.getElementsByClassName("toggles")[0];
+    elements.classList.toggle("chk");
+    });
+    const buttons = document.getElementsByClassName("buttonss");
+    buttons[0].addEventListener("click", function(){
+    const element = document.getElementsByClassName("toggle")[0];
+    element.classList.toggle("chk");
+    const elements = document.getElementsByClassName("toggles")[0];
+    elements.classList.toggle("chk");
+    });
+</script>
+{% endblock js %}
